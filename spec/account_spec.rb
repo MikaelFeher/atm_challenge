@@ -12,7 +12,10 @@ describe Account do
     expect(subject.balance).to eq 0
   end
 
-
+  it 'account active on initialize?' do
+    expect(subject.account_status).to eq :active
+  end
+  
   it 'pin exists on initialize' do
     expect(subject.pin_code).not_to eq nil
   end
