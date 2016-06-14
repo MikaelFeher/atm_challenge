@@ -1,11 +1,13 @@
 class Person
 
-  attr_reader :cash, :name
+  attr_reader :cash, :name, :account
 
   def initialize(attrs = {})
     @cash = 0
+    @account
     set_name(attrs[:name])
   end
+
 
 
   private
