@@ -16,6 +16,11 @@ describe Account do
     expect(subject.account_status).to eq :active
   end
 
+  it 'deactivates the account using instance method' do
+    subject.deactivate
+    expect(subject.account_status).to eq :deactivated
+  end
+
   it 'pin exists on initialize' do
     expect(subject.pin_code).not_to eq nil
   end
@@ -25,8 +30,4 @@ describe Account do
       expect(pin_length).to eq 4
   end
 
-  it 'deactivates the account using instance method' do
-    subject.deactivate
-    expect(subject.account_status).to eq :deactivated
-  end
 end
