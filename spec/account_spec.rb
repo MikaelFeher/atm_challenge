@@ -8,8 +8,8 @@ describe Account do
     expect(subject.exp_date).to eq expected_date
   end
 
-  it 'account created with a $100 balance' do
-    expect(subject.balance).to eq 100
+  it 'account created with a $0 balance' do
+    expect(subject.balance).to eq 0
   end
 
 

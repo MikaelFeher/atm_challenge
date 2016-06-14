@@ -9,7 +9,7 @@ class Account
 
   def initialize
     @pin_code = rand(1000..9999)
-    @balance = 100
+    @balance = 0
     @exp_date = set_exp_date
     @account_status = :active
 
