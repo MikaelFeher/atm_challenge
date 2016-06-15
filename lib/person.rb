@@ -1,11 +1,23 @@
+require 'atm.rb'
+require 'account.rb'
+
+
 class Person
 
   attr_reader :cash, :name, :account
 
   def initialize(attrs = {})
     @cash = 0
-    @account
-    set_name(attrs[:name])
+    @name = set_name(attrs[:name])
+  end
+
+
+  def create_account
+    @account = Account.new(owner: self)
+  end
+
+  def deposit(amount)
+    @account.balance += amount
   end
 
 

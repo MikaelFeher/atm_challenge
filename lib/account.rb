@@ -1,6 +1,7 @@
 class Account
 
-  attr_reader :pin_code, :balance, :account_status, :exp_date, :owner
+  attr_reader :pin_code, :exp_date, :owner
+  attr_accessor :balance, :account_status
 
   STANDARD_VALIDITY_YEARS = 5
 
