@@ -4,7 +4,7 @@ require 'account.rb'
 
 class Person
 
-  attr_reader :cash, :name, :account
+  attr_accessor :cash, :name, :account
 
   def initialize(attrs = {})
     @cash = 0
@@ -17,8 +17,13 @@ class Person
   end
 
   def deposit(amount)
-    @account.balance += amount
+    if has_no_account?
+      raise "No account present"
+    else
+      @account.balance += amount
+    end
   end
+
 
 
 
@@ -29,6 +34,10 @@ class Person
 
   def missing_name
     raise 'A name is required'
+  end
+
+  def has_no_account?
+    @account == nil
   end
 
 end
