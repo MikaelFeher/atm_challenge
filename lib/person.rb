@@ -17,15 +17,12 @@ class Person
   end
 
   def deposit(amount)
-    if has_no_account?
-      raise "No account present"
-    else
-      @account.balance += amount
-    end
+    @account == nil ? has_no_account : deposit_funds(amount)
   end
 
-
-
+  def withdraw(args = {})
+    @account == nil ? has_no_account : withdraw_funds(args)
+  end
 
   private
   def set_name(obj)
@@ -36,8 +33,21 @@ class Person
     raise 'A name is required'
   end
 
-  def has_no_account?
-    @account == nil
+  def has_no_account
+    raise RuntimeError, 'No account present'
   end
 
+  def deposit_funds(amount)
+    @cash -= amount
+    @account.balance += amount
+  end
+
+  def withdraw_funds(args)
+    args[:atm] == nil ? missing_atm : atm = args[:atm]
+    account = @account
+    amount = args[:amount]
+    pin = args[:pin]
+    response = atm.withdraw(amount, pin, account)
+    response[:status] == true ? increase_cash(response) : response
+  end
 end

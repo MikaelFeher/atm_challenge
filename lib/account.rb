@@ -1,3 +1,5 @@
+require 'date'
+
 class Account
 
   attr_reader :pin_code, :exp_date, :owner
