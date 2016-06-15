@@ -11,7 +11,6 @@ class Person
     @name = set_name(attrs[:name])
   end
 
-
   def create_account
     @account = Account.new(owner: self)
   end
@@ -23,6 +22,7 @@ class Person
   def withdraw(args = {})
     @account == nil ? has_no_account : withdraw_funds(args)
   end
+
 
   private
   def set_name(obj)
@@ -49,5 +49,13 @@ class Person
     pin = args[:pin]
     response = atm.withdraw(amount, pin, account)
     response[:status] == true ? increase_cash(response) : response
+  end
+
+  def missing_atm
+    raise RuntimeError, 'An ATM is required'
+  end
+
+  def increase_cash(response)
+    @cash += response[:amount]
   end
 end
