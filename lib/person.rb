@@ -16,17 +16,17 @@ class Person
   end
 
   def deposit(amount)
-    @account == nil ? has_no_account : deposit_funds(amount)
+    @account.nil? ? has_no_account : deposit_funds(amount)
   end
 
   def withdraw(args = {})
-    @account == nil ? has_no_account : withdraw_funds(args)
+    @account.nil? ? has_no_account : withdraw_funds(args)
   end
 
 
   private
   def set_name(obj)
-    obj == nil ? missing_name : @name = obj
+    obj.nil? ? missing_name : @name = obj
   end
 
   def missing_name
@@ -60,11 +60,7 @@ class Person
   end
 
   def setting_atm(args)
-    if args[:atm].nil?
-      missing_atm
-    else
-      args[:atm]
-    end
+    args[:atm].nil? ? missing_atm : args[:atm]
   end
-  
+
 end
