@@ -1,5 +1,5 @@
-require 'atm.rb'
-require 'account.rb'
+require './lib/atm.rb'
+require './lib/account.rb'
 
 
 class Person
@@ -23,6 +23,9 @@ class Person
     @account.nil? ? has_no_account : withdraw_funds(args)
   end
 
+  def check_balance
+    print "Current balance is: $#{@account.balance}"
+  end
 
   private
   def set_name(obj)

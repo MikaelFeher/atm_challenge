@@ -33,6 +33,11 @@ describe Person do
     it 'with himself as an owner' do
       expect(subject.account.owner).to be subject
     end
+
+    it 'with a balance of 0' do
+      # expect(subject.check_balance).to match "Current balance is: $0"
+      expect { subject.check_balance }.to output("Current balance is: $0").to_stdout
+    end
   end
 
   describe 'can manage funds if an account been created' do
