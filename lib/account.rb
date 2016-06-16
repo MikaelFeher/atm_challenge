@@ -12,7 +12,7 @@ class Account
     @balance = 0
     @exp_date = set_exp_date
     @account_status = :active
-    set_owner(attrs[:owner])
+    @owner = set_owner(attrs[:owner])
   end
 
   def deactivate

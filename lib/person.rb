@@ -43,7 +43,7 @@ class Person
   end
 
   def withdraw_funds(args)
-    args[:atm] == nil ? missing_atm : atm = args[:atm]
+    atm = setting_atm(args)
     account = @account
     amount = args[:amount]
     pin = args[:pin]
@@ -58,4 +58,13 @@ class Person
   def increase_cash(response)
     @cash += response[:amount]
   end
+
+  def setting_atm(args)
+    if args[:atm].nil?
+      missing_atm
+    else
+      args[:atm]
+    end
+  end
+  
 end
